@@ -8,6 +8,7 @@ function App() {
   const { item: todos, guardarItem: guardarTodos } = useLocalStorage("TODOS_V1", []);
   const [newTodo, setNewTodo] = useState("");
   const [busqueda, setBusqueda] = useState("");
+  const [isCompleted, setIsCompleted] = useState(false)
 
   const todosCompletados = todos.filter(todo => todo.completed).length;
   const todosTotal = todos.length;
@@ -41,12 +42,14 @@ function App() {
   }
 
   const completarTodos = (texto) => {
+    setIsCompleted(!isCompleted)
     const indexTodo = todos.findIndex(todo => todo.text === texto);
     const newTodos = [...todos];
-    newTodos[indexTodo] = {
-      text: todos[indexTodo].text,
-      completed: true
-    };
+    // newTodos[indexTodo] = {
+    //   text: todos[indexTodo].text,
+    //   completed: true
+    // };
+    newTodos[indexTodo].completed = isCompleted;
     guardarTodos(newTodos);
   }
 
@@ -64,20 +67,22 @@ function App() {
 
   return (
     <div className="App font bg-color flex justify-center h-screen items-center font-sans">
-      <div className="bg-white p-6 m-4 flex flex-col w-1/4 h-96 rounded-2xl">
-        <h2 className="text-4xl font-bold text-sky-300 mb-6 leading-9 italic">Cree una nueva tarea</h2>
+      <section className="bg-white p-6 m-4 flex flex-col w-1/4 h-4/6 rounded-2xl">
+        <h2 className="text-4xl font-bold text-sky-300 mb-6 leading-9 italic">Crea una nueva tarea</h2>
         <form onSubmit={onSubmit}>
           <label htmlFor="tarea" className="tracking-widest text-slate-400 text-xs">NOMBRE DE LA TAREA :</label>
           <input value={newTodo} id="tarea" onChange={onChange} className="my-2 input rounded-2xl" placeholder="Conquistar el mundo..."></input>
-          <button className="my-2 button text-white" type="submit" disabled={newTodo === "" ? true : false }>Crear</button>
+          <button className="my-2 button text-white" type="submit" disabled={newTodo === "" ? true : false}>Crear</button>
         </form>
-      </div>
+      </section>
 
-      <div className=" p-6 m-4 flex flex-col w-1/4 h-96 rounded-2xl" >
-        <h2 className="text-4xl font-bold text-center text-sky-300" >Tus tareas </h2>
-        <span className="my-2 text-center text-slate-500" >Has completado <b>{todosCompletados} de {todosTotal}</b> tareas.</span>
+      <section className=" m-4 flex flex-col w-1/4 h-4/6 rounded-2xl" >
+        <div className="p-6 flex flex-col">
+          <h2 className="text-4xl font-bold text-center text-sky-300" >Tus tareas </h2>
+          <span className="my-2 text-center text-slate-500" >Has completado <b>{todosCompletados} de {todosTotal}</b> tareas.</span>
         <TodoSearch busqueda={busqueda} setBusqueda={setBusqueda} ></TodoSearch>
-        <ul className="overflow-auto">
+        </div>
+        <ul className="overflow-auto px-6">
           {todosBuscados.map((todo, index) => (
             <TodoItem
               key={index}
@@ -88,7 +93,7 @@ function App() {
             >
             </TodoItem>))}
         </ul>
-      </div>
+      </section>
 
     </div>
   );

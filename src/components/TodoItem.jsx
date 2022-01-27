@@ -1,13 +1,31 @@
 import React from "react";
 
-export const TodoItem = ({ text, onComplete, onDelete }) => {
+export const TodoItem = ({ text, onComplete, onDelete, completed }) => {
   return (
     <div className="my-2 todo-item flex">
-      <button className="px-2 flex items-center text-sky-100 hover:text-sky-300" onClick={onComplete}>
-        <span className="material-icons-round text-xl">radio_button_unchecked</span>
+      <button
+        className="px-2 flex items-center hover:text-sky-300"
+        onClick={onComplete}
+      >
+        {completed ? (
+          <span className="material-icons-round text-xl text-sky-400">task_alt</span>
+        ) : (
+          <span className="material-icons-round text-xl text-sky-100">
+            radio_button_unchecked
+          </span>
+        )}
       </button>
-      <span className="w-11/12 text-slate-600 flex items-center">{text}</span>
-      <button className="px-2 flex items-center text-sky-100 hover:text-red-500" onClick={onDelete}>
+      <span
+        className={`w-11/12 text-slate-600 flex items-center ${
+          completed && "line-through"
+        }`}
+      >
+        {text}
+      </span>
+      <button
+        className="px-2 flex items-center text-sky-100 hover:text-red-500"
+        onClick={onDelete}
+      >
         <span className="material-icons-round text-xl">close</span>
       </button>
     </div>
