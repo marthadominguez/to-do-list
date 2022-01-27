@@ -1,27 +1,21 @@
 import React, { useState } from "react";
 import { TodoSearch } from './components/TodoSearch'
 import { TodoItem } from './components/TodoItem';
-import { TodoList } from './components/TodoList';
+import useLocalStorage from "./customHooks/useLocalStorage";
 
 function App() {
 
-  const localStorageTodos = localStorage.getItem('TODOS_V1')
-  let parsedTodos;
-  if (!localStorageTodos) {
-    // no existen todos todavía, le asignamos entonces una lista vacía.
-    localStorage.setItem('TODOS_V1', JSON.stringify([]))
-    parsedTodos = []
-  } else {
-    //todos ya existentes
-    parsedTodos = JSON.parse(localStorageTodos)
-  }
-
+  const { item: todos, guardarItem: guardarTodos } = useLocalStorage("TODOS_V1", []);
+  const [newTodo, setNewTodo] = useState("");
   const [busqueda, setBusqueda] = useState("");
-  const [todos, setTodos] = useState(parsedTodos)
+
   const todosCompletados = todos.filter(todo => todo.completed).length;
   const todosTotal = todos.length;
 
   let todosBuscados = [];
+
+  // Si no hay búsqueda, devuelve la lista de todos los TODO's en el Local Storage
+  // De lo contrario, filtra la lista de TODO's y retorna los que incluyen el texto buscado
   if (busqueda.length < 1) {
     todosBuscados = todos
   } else {
@@ -32,10 +26,18 @@ function App() {
     });
   }
 
-  const guardarTodos = (newTodos) => {
-    const stringifiedTodos = JSON.stringify(newTodos);
-    localStorage.setItem('TODOS_V1', stringifiedTodos);
-    setTodos(newTodos);
+  const crearTodo = (text) => {
+    const newTodos = [...todos];
+    newTodos.push({
+      text,
+      completed: false
+    })
+    guardarTodos(newTodos);
+  }
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    crearTodo(newTodo);
   }
 
   const completarTodos = (texto) => {
@@ -55,30 +57,39 @@ function App() {
     guardarTodos(newTodos);
   }
 
+  const onChange = (event) => {
+    setNewTodo(event.target.value);
+    console.log(event.target.value)
+  };
+
   return (
-    <div className="App flex justify-center h-screen items-center">
-      <div className="bg-lime-200 p-12 flex flex-col w-1/3 h-96">
-        <h2 className="text-3xl">Crea una nueva tarea</h2>
-        <span className="my-4">Nombre de la tarea:</span>
-        <input className="my-4" placeholder="Conquistar el mundo..."></input>
-        <button className="my-4" type="button" onClick={console.log()} >Crear tarea</button>
+    <div className="App font bg-color flex justify-center h-screen items-center font-sans">
+      <div className="bg-white p-6 m-4 flex flex-col w-1/4 h-96 rounded-2xl">
+        <h2 className="text-4xl font-bold text-sky-300 mb-6 leading-9 italic">Cree una nueva tarea</h2>
+        <form onSubmit={onSubmit}>
+          <label htmlFor="tarea" className="tracking-widest text-slate-400 text-xs">NOMBRE DE LA TAREA :</label>
+          <input value={newTodo} id="tarea" onChange={onChange} className="my-2 input rounded-2xl" placeholder="Conquistar el mundo..."></input>
+          <button className="my-2 button text-white" type="submit" disabled={newTodo === "" ? true : false }>Crear</button>
+        </form>
       </div>
-      <div className="bg-emerald-200 p-12 flex flex-col w-1/3 h-96" >
-        <h2 className="text-3xl" >Tus tareas </h2>
-        <span className="my-4" >Has completado {todosCompletados} de {todosTotal} tareas.</span>
+
+      <div className=" p-6 m-4 flex flex-col w-1/4 h-96 rounded-2xl" >
+        <h2 className="text-4xl font-bold text-center text-sky-300" >Tus tareas </h2>
+        <span className="my-2 text-center text-slate-500" >Has completado <b>{todosCompletados} de {todosTotal}</b> tareas.</span>
         <TodoSearch busqueda={busqueda} setBusqueda={setBusqueda} ></TodoSearch>
-        <TodoList>
+        <ul className="overflow-auto">
           {todosBuscados.map((todo, index) => (
             <TodoItem
               key={index}
               text={todo.text}
               completed={todo.completed}
               onComplete={() => completarTodos(todo.text)}
-              onDelete={()=> eliminarTodos(todo.text)}
-              >
+              onDelete={() => eliminarTodos(todo.text)}
+            >
             </TodoItem>))}
-        </TodoList>
+        </ul>
       </div>
+
     </div>
   );
 }
