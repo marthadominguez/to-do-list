@@ -2,7 +2,7 @@ import React from "react";
 
 export const Footer = () => {
   return (
-    <div className="flex justify-center items-center pb-2 absolute inset-x-0 bottom-0 text-slate-500">
+    <div className="flex justify-center items-center pb-4 absolute inset-x-0 bottom-0 text-slate-500">
       <p>Martha L. Domínguez</p>
       <p className="px-2">|</p>
       <a

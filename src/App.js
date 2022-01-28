@@ -40,7 +40,7 @@ function App() {
   const onSubmit = (event) => {
     event.preventDefault();
     crearTodo(newTodo);
-    setNewTodo(" ")
+    setNewTodo("")
   }
 
   const completarTodos = (texto) => {
@@ -74,12 +74,11 @@ function App() {
           <form onSubmit={onSubmit}>
             <label htmlFor="tarea" className="tracking-widest text-slate-400 text-xs">NOMBRE DE LA TAREA :</label>
             <input value={newTodo} name="tarea" id="tarea" onChange={onChange} className="my-2 input rounded-2xl" placeholder="Conquistar el mundo..."></input>
-            <button className="my-2 button text-white" type="submit" disabled={newTodo === "" ? true : false}>Crear</button>
+            <button className={`"my-2 text-white ${newTodo === "" ? "button-disabled" : "button"}`} type="submit" disabled={newTodo === "" ? true : false}>Crear</button>
           </form>
         </section>
-
         <section className=" m-4 flex flex-col w-1/4 h-4/6 rounded-2xl" >
-          <div className="p-6 flex flex-col">
+          <div className="px-6 pt-6 pb-4 flex flex-col">
             <h2 className="text-4xl font-bold text-center text-sky-300" >Tus tareas </h2>
             <span className="my-2 text-center text-slate-500" >
               Has completado <b>{todosCompletados} de {todosTotal}</b>
