@@ -10,7 +10,7 @@ export const TodoItem = ({ text, onComplete, onDelete, completed }) => {
         {completed ? (
           <span className="material-icons-round text-xl text-sky-400">task_alt</span>
         ) : (
-          <span className="material-icons-round text-xl text-sky-100">
+          <span className="material-icons-round text-xl text-sky-400">
             radio_button_unchecked
           </span>
         )}
@@ -23,7 +23,7 @@ export const TodoItem = ({ text, onComplete, onDelete, completed }) => {
         {text}
       </span>
       <button
-        className="px-2 flex items-center text-sky-100 hover:text-red-500"
+        className="px-2 flex items-center text-sky-200 hover:text-red-500"
         onClick={onDelete}
       >
         <span className="material-icons-round text-xl">close</span>

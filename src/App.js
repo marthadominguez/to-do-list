@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { TodoSearch } from './components/TodoSearch'
 import { TodoItem } from './components/TodoItem';
+import { Footer } from './components/Footer'
 import useLocalStorage from "./customHooks/useLocalStorage";
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
   const onSubmit = (event) => {
     event.preventDefault();
     crearTodo(newTodo);
+    setNewTodo(" ")
   }
 
   const completarTodos = (texto) => {
@@ -62,39 +64,43 @@ function App() {
 
   const onChange = (event) => {
     setNewTodo(event.target.value);
-    console.log(event.target.value)
   };
 
   return (
-    <div className="App font bg-color flex justify-center h-screen items-center font-sans">
-      <section className="bg-white p-6 m-4 flex flex-col w-1/4 h-4/6 rounded-2xl">
-        <h2 className="text-4xl font-bold text-sky-300 mb-6 leading-9 italic">Crea una nueva tarea</h2>
-        <form onSubmit={onSubmit}>
-          <label htmlFor="tarea" className="tracking-widest text-slate-400 text-xs">NOMBRE DE LA TAREA :</label>
-          <input value={newTodo} id="tarea" onChange={onChange} className="my-2 input rounded-2xl" placeholder="Conquistar el mundo..."></input>
-          <button className="my-2 button text-white" type="submit" disabled={newTodo === "" ? true : false}>Crear</button>
-        </form>
-      </section>
+    <div className="App bg-color h-screen relative">
+      <div className="flex justify-center items-center h-full">
+        <section className="bg-white p-6 m-4 flex flex-col w-1/4 h-4/6 rounded-2xl">
+          <h2 className="text-4xl font-bold text-sky-300 mb-6 leading-9 ">Crea una nueva tarea</h2>
+          <form onSubmit={onSubmit}>
+            <label htmlFor="tarea" className="tracking-widest text-slate-400 text-xs">NOMBRE DE LA TAREA :</label>
+            <input value={newTodo} name="tarea" id="tarea" onChange={onChange} className="my-2 input rounded-2xl" placeholder="Conquistar el mundo..."></input>
+            <button className="my-2 button text-white" type="submit" disabled={newTodo === "" ? true : false}>Crear</button>
+          </form>
+        </section>
 
-      <section className=" m-4 flex flex-col w-1/4 h-4/6 rounded-2xl" >
-        <div className="p-6 flex flex-col">
-          <h2 className="text-4xl font-bold text-center text-sky-300" >Tus tareas </h2>
-          <span className="my-2 text-center text-slate-500" >Has completado <b>{todosCompletados} de {todosTotal}</b> tareas.</span>
-        <TodoSearch busqueda={busqueda} setBusqueda={setBusqueda} ></TodoSearch>
-        </div>
-        <ul className="overflow-auto px-6">
-          {todosBuscados.map((todo, index) => (
-            <TodoItem
-              key={index}
-              text={todo.text}
-              completed={todo.completed}
-              onComplete={() => completarTodos(todo.text)}
-              onDelete={() => eliminarTodos(todo.text)}
-            >
-            </TodoItem>))}
-        </ul>
-      </section>
-
+        <section className=" m-4 flex flex-col w-1/4 h-4/6 rounded-2xl" >
+          <div className="p-6 flex flex-col">
+            <h2 className="text-4xl font-bold text-center text-sky-300" >Tus tareas </h2>
+            <span className="my-2 text-center text-slate-500" >
+              Has completado <b>{todosCompletados} de {todosTotal}</b>
+              {todosTotal === 1 ? " tarea" : " tareas"}
+            </span>
+            <TodoSearch busqueda={busqueda} setBusqueda={setBusqueda} ></TodoSearch>
+          </div>
+          <ul className="overflow-auto px-6">
+            {todosBuscados.map((todo, index) => (
+              <TodoItem
+                key={index}
+                text={todo.text}
+                completed={todo.completed}
+                onComplete={() => completarTodos(todo.text)}
+                onDelete={() => eliminarTodos(todo.text)}
+              >
+              </TodoItem>))}
+          </ul>
+        </section>
+      </div>
+      <Footer></Footer>
     </div>
   );
 }

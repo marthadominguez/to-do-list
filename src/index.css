@@ -15,7 +15,7 @@
 }
 
 .todo-item {
-  @apply rounded-2xl h-9 bg-white focus:outline-none
+  @apply rounded-2xl py-1 bg-white focus:outline-none
 }
 
 .bg-color {
