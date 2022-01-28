@@ -2,6 +2,7 @@ import { useState } from "react";
 
 // Hook para guardar en el Local Storage los TODO's
 const useLocalStorage = (itemName, initialValue) => {
+
     const localStorageItem = localStorage.getItem(itemName)
     let parsedItems;
 
@@ -21,7 +22,7 @@ const useLocalStorage = (itemName, initialValue) => {
         localStorage.setItem(itemName, stringifiedItem);
         setItem(newItem);
     }
-
+    
     return { item, guardarItem };
 };
 
