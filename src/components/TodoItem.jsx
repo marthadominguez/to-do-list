@@ -28,7 +28,7 @@ export const TodoItem = ({ text, onComplete, onDelete, completed }) => {
         {text}
       </span>
       <button
-        className="px-2 flex items-center text-sky-200 hover:text-red-500"
+        className="px-2 flex items-center text-slate-200 hover:text-red-500"
         onClick={onDelete}
       >
         <span className="material-icons-round text-xl">close</span>
