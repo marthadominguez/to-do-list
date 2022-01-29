@@ -88,7 +88,7 @@ export const AppUI = () => {
                     {todosTotal === 0 ? (<span className="my-5 text-center text-slate-500">
                         No hay tareas.
                     </span>):(<></>)}
-                    {todosBuscados.length === 0 ? (<span className="my-5 text-center text-slate-500">
+                    {todosTotal !== 0 && todosBuscados.length === 0 ? (<span className="my-5 text-center text-slate-500">
                         No hay resultados.
                     </span>):(<></>)}
                 </section>
