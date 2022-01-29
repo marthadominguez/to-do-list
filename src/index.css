@@ -12,11 +12,11 @@
 }
 
 .button {
-  @apply rounded-2xl px-4 py-1 bg-sky-500 active:bg-sky-600 focus:outline-none;
+  @apply rounded-2xl px-4 py-1 focus:outline-none;
 }
 
 .button-disabled {
-  @apply rounded-2xl px-4 py-1 bg-sky-500 focus:outline-none;
+  @apply rounded-2xl px-4 py-1 focus:outline-none;
 }
 
 .todo-item {
@@ -24,6 +24,6 @@
 }
 
 .button-color {
-  @apply w-5 h-5 rounded-xl m-2 drop-shadow-sm
+  @apply w-5 h-5 rounded-xl drop-shadow-sm
 }
 

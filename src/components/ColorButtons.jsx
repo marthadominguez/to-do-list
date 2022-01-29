@@ -15,20 +15,20 @@ export const ColorButtons = () => {
   };
 
   return (
-    <div className="absolute inset-x-0 top-0">
+    <div className="absolute top-0 w-auto mt-4 flex ">
       <button
         type="button"
-        className="bg-emerald-300 button-color"
+        className="bg-emerald-300 button-color ml-5"
         onClick={() => cambiarColor("emerald")}
       ></button>
       <button
         type="button"
-        className="bg-purple-300 button-color"
+        className="bg-purple-300 button-color ml-2"
         onClick={() => cambiarColor("purple")}
       ></button>
       <button
         type="button"
-        className="bg-sky-300 button-color"
+        className="bg-sky-300 button-color ml-2"
         onClick={() => cambiarColor("sky")}
       ></button>
     </div>
