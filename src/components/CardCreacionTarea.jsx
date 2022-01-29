@@ -16,7 +16,7 @@ export const CardCreacionTarea = ({crearTodo}) => {
     };
  
   return (
-    <section className="bg-white p-6 md:m-4 mt-16 mx-20 flex flex-col md:w-96 w-10/12 md:h-4/6 h-auto rounded-2xl">
+    <section className="bg-white p-6 mt-16 mx-20 flex flex-col w-10/12 h-auto rounded-2xl md:m-4 md:w-96 md:h-4/6">
       <h2 className={colorMode === "sky" ? ("text-4xl font-bold text-sky-300 mb-6 leading-9") : (colorMode === "purple" ? ("text-4xl font-bold text-purple-300 mb-6 leading-9") : ("text-4xl font-bold text-emerald-300 mb-6 leading-9"))} >
         Crea una nueva tarea
       </h2>

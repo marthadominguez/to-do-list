@@ -58,11 +58,11 @@ export const AppUI = () => {
     // {``}
     // {colorMode === "sky" ? ("") : (colorMode === "purple" ? ("") : (""))}  
     return (
-        <div className={colorMode === "sky" ? ("App bg-sky-100 md:h-screen h-auto relative") : (colorMode === "purple" ? ("App bg-purple-100 md:h-screen h-auto relative") : ("App bg-emerald-100 md:h-screen h-auto relative"))}>
-            <div className="flex justify-center items-center md:h-full md:flex-row flex-col h-auto">
+        <div className={colorMode === "sky" ? ("App bg-sky-100 h-auto relative md:h-screen") : (colorMode === "purple" ? ("App bg-purple-100h-auto relative md:h-screen ") : ("App bg-emerald-100 h-auto relative md:h-screen"))}>
+            <div className="flex justify-center items-center flex-col h-auto md:h-full md:flex-row">
                 <CardCreacionTarea crearTodo={crearTodo}></CardCreacionTarea>
-                <section className="m-4 flex flex-col md:w-96 w-10/12 md:h-4/6 h-96 md:mb-0 mb-16 rounded-2xl">
-                    <div className="md:px-6 pt-6 pb-4 flex flex-col px-4">
+                <section className="m-4 flex flex-col w-10/12 h-96 mb-16 rounded-2xl md:w-96 md:h-4/6 md:mb-0">
+                    <div className="pt-6 pb-4 flex flex-col px-4 md:px-6">
                         <h2 className={colorMode === "sky" ? ("text-4xl font-semibold text-center text-sky-400 tracking-wider") : (colorMode === "purple" ? ("text-4xl font-semibold text-center text-purple-400 tracking-wider") : ("text-4xl font-semibold text-center text-emerald-400 tracking-wider"))}>Tus tareas</h2>
                         <span className="my-2 text-center text-slate-500" >
                             Has completado <b>{todosCompletados} de {todosTotal}</b>
@@ -70,7 +70,7 @@ export const AppUI = () => {
                         </span>
                         <TodoSearch busqueda={busqueda} setBusqueda={setBusqueda} ></TodoSearch>
                     </div>
-                    <ul className="overflow-auto md:px-6 sm:overflow-auto px-4">
+                    <ul className="overflow-auto px-4 md:px-6 sm:overflow-auto">
                         {todosBuscados.map((todo, index) => (
                             <TodoItem
                                 key={index}
