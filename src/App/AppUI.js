@@ -58,12 +58,12 @@ export const AppUI = () => {
     // {``}
     // {colorMode === "sky" ? ("") : (colorMode === "purple" ? ("") : (""))}  
     return (
-        <div className={colorMode === "sky" ? ("App bg-sky-100 relative md:h-screen") : (colorMode === "purple" ? ("App bg-purple-100h-auto relative md:h-screen ") : ("App bg-emerald-100 h-auto relative md:h-screen"))}>
-            <div className="flex justify-center items-center flex-col h-auto md:h-full md:flex-row">
+        <div className={colorMode === "sky" ? ("App bg-sky-100 relative md:h-screen") : (colorMode === "purple" ? ("App bg-purple-100 h-auto relative md:h-screen ") : ("App bg-emerald-100 h-auto relative md:h-screen"))}>
+            <div className="flex justify-center items-center flex-col h-full md:h-full md:flex-row">
                 <CardCreacionTarea crearTodo={crearTodo}></CardCreacionTarea>
                 <section className="m-4 flex flex-col w-10/12 h-96 mb-16 rounded-2xl md:w-96 md:h-4/6 md:mb-0">
-                    <div className="pt-6 pb-4 flex flex-col px-4 md:px-6 md:pt-3">
-                        <h2 className={colorMode === "sky" ? ("text-4xl font-semibold text-center text-sky-400 tracking-wider") : (colorMode === "purple" ? ("text-4xl font-semibold text-center text-purple-400 tracking-wider") : ("text-4xl font-semibold text-center text-emerald-400 tracking-wider"))}>Tus tareas</h2>
+                    <div className="pt-1 pb-4 flex flex-col px-4 md:px-6 md:pt-6">
+                        <h2 className={colorMode === "sky" ? ("text-3xl font-semibold text-center text-sky-400 tracking-wider md:text-4xl") : (colorMode === "purple" ? ("text-3xl font-semibold text-center text-purple-400 tracking-wider md:text-4xl") : ("text-3xl font-semibold text-center text-emerald-400 tracking-wider md:text-4xl"))}>Tus tareas</h2>
                         <span className="my-2 text-center text-slate-500" >
                             Has completado <b>{todosCompletados} de {todosTotal}</b>
                             {todosTotal === 1 ? " tarea" : " tareas"}
