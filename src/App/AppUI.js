@@ -33,8 +33,6 @@ export const AppUI = () => {
         });
     }
 
-    console.log(todosBuscados)
-
     const crearTodo = (text) => {
         const newTodos = [...todos];
         newTodos.push({
@@ -49,8 +47,6 @@ export const AppUI = () => {
         const newTodos = [...todos];
         newTodos[indexTodo].completed = !completed;
         guardarTodos(newTodos);
-        console.log("hiciste click");
-        console.log(newTodos[indexTodo])
     }
 
     const eliminarTodos = (texto) => {
