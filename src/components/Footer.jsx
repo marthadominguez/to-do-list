@@ -11,7 +11,7 @@ export const Footer = () => {
         className="px-1 text-xl"
         href="https://www.linkedin.com/in/martha-liliana-dom%C3%ADnguez-09b722136"
       >
-        <span className="iconify" data-icon="akar-icons:github-fill"></span>
+          <span className="iconify" data-icon="akar-icons:linkedin-fill"></span>
       </a>
       <a
         target="_blank"
@@ -19,7 +19,7 @@ export const Footer = () => {
         className="px-1 text-xl"
         href="https://github.com/marthadominguez"
       >
-        <span className="iconify" data-icon="akar-icons:linkedin-fill"></span>
+         <span className="iconify" data-icon="akar-icons:github-fill"></span>
       </a>
     </div>
   );
