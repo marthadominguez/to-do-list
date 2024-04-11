@@ -9,7 +9,7 @@ export const Footer = () => {
         target="_blank"
         rel="noreferrer"
         className="px-1 text-xl"
-        href="https://www.linkedin.com/in/martha-liliana-dom%C3%ADnguez-09b722136"
+        href="https://www.linkedin.com/in/marthaldominguez/"
       >
           <span className="iconify" data-icon="akar-icons:linkedin-fill"></span>
       </a>
