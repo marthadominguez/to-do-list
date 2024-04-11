@@ -27,7 +27,7 @@ export const CardCreacionTarea = ({crearTodo}) => {
           name="tarea"
           id="tarea"
           onChange={onChange}
-          className="my-2 input rounded-2xl"
+          className="my-2 input rounded-2xl text-slate-600"
           placeholder="Conquistar el mundo..."
         ></input>
         <button
