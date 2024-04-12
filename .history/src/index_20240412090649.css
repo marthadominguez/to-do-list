@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 .search {
-  @apply rounded-full px-4 h-9 block bg-white w-full focus:outline-none sm:text-sm;
+  @apply rounded-2xl px-4 h-9 block bg-white w-full focus:outline-none sm:text-sm;
 }
 
 .input {

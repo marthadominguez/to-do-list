@@ -7,7 +7,7 @@ export const TodoSearch = ({busqueda, setBusqueda}) => {
 
   return (
     <div>
-      <input className="my-2 text-slate-600 search" onChange={onSearch} value={busqueda} placeholder="Buscar..."></input>
+      <input className="my-2 search" onChange={onSearch} value={busqueda} placeholder="Buscar..."></input>
     </div>
   );
 };

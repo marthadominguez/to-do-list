@@ -70,7 +70,7 @@ export const AppUI = () => {
                         </span>
                         <TodoSearch busqueda={busqueda} setBusqueda={setBusqueda} ></TodoSearch>
                     </div>
-                    <ul className="overflow-auto md:px-6 sm:overflow-auto">
+                    <ul className="overflow-auto px-4 md:px-6 sm:overflow-auto">
                         {todosBuscados.map((todo, index) => (
                             <TodoItem
                                 key={index}
